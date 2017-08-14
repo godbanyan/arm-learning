@@ -1,4 +1,4 @@
-debugfile=main
+debugfile=dbgfile
 dirdiv=directives
 
 VPATH=$(dirdiv)
@@ -20,6 +20,8 @@ install:
 		sudo ln -sf arm-none-eabi-ld ald; \
 	fi
 
+uninstall:
+	
 %: %.s
 	agcc -Wl,-Ttext=0 -o $(debugfile).elf $(dirdiv)/$@.s -g -nostdlib
 	aobjcopy -O binary $(debugfile).elf $(debugfile).bin
@@ -36,4 +38,4 @@ gdb:
 
 .PHONY: clean
 clean:
-	-rm *.bin *.elf
+	-rm -rf *.bin *.elf
