@@ -1,6 +1,5 @@
+vpath %.s arm aarch64
 debugfile=dbgfile
-
-VPATH=arm:aarch64
 
 default:
 	@echo "please input a target"
@@ -56,3 +55,6 @@ gdb:
 .PHONY: clean
 clean:
 	-rm -rf *.bin *.elf
+
+.DEFAULT:
+	@echo This target is not exist.
